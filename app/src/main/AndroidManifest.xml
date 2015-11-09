@@ -17,6 +17,7 @@
         </activity>
 
         <activity android:name=".module.travelnote.YYTravelNote"/>
+        <activity android:name=".YaYaYouJi"/>
     </application>
 
 </manifest>

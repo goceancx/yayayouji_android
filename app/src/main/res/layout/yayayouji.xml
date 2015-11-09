@@ -4,16 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:background="@color/colorPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
-
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/travelnotes_rv"/>
+  <ExpandableListView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/exlv"></ExpandableListView>
 
 </LinearLayout>

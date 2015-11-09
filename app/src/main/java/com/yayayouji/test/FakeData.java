@@ -5,4 +5,15 @@ package com.yayayouji.test;
  */
 public class FakeData {
 
+    public static String[] sentences={
+
+    };
+    public static String[] words={
+
+    };
+    public static String[] images={
+
+    };
+
+
 }
