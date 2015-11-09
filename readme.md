@@ -15,3 +15,19 @@
     - LogUtil
 - widget 自定义控件模块
 - db  数据库模块（sql建表语句 DBHelper）
+1. 参考IO2015app 写基类 写框架
+	分析:
+		- Presenter
+		- Model
+		- UpdatableView
+		- addPresenterFragement
+		- PresenterFragmentImpl
+		- BaseActivity
+
+	UI:
+		- CollectionView
+		- DrawShadowFragment
+
+
+2. 挖数据,找内容
+3. 写音乐模块 写笔记模块

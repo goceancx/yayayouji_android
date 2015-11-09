@@ -9,7 +9,6 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.TextView;
 
-import com.yayayouji.global.G;
 
 /**
  * Created by oceancx on 15/10/24.
@@ -25,66 +24,14 @@ public class YaYaYouJi extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.yayayouji);
-        exlv = (ExpandableListView) findViewById(R.id.exlv);
-        exlv.setAdapter(new BaseExpandableListAdapter() {
-            @Override
-            public int getGroupCount() {
-                return G.countryGroup.length;
-            }
 
-            @Override
-            public int getChildrenCount(int i) {
-                return G.countries[i].length;
-            }
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
-            @Override
-            public Object getGroup(int i) {
-                return null;
-            }
+        final ActionBar ab = getSupportActionBar();
+        ab.setHomeAsUpIndicator(R.drawable.ic_menu);
+        ab.setDisplayHomeAsUpEnabled(true);
 
-            @Override
-            public Object getChild(int i, int i1) {
-                return null;
-            }
-
-            @Override
-            public long getGroupId(int i) {
-                return 0;
-            }
-
-            @Override
-            public long getChildId(int i, int i1) {
-                return 0;
-            }
-
-            @Override
-            public boolean hasStableIds() {
-                return false;
-            }
-
-            @Override
-            public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
-                if (view == null)
-                    view = LayoutInflater.from(viewGroup.getContext()).inflate(android.R.layout.simple_expandable_list_item_1, viewGroup, false);
-                TextView view1 = (TextView) view;
-                view1.setText(G.countryGroup[i]);
-                return view1;
-            }
-
-            @Override
-            public View getChildView(int i, int i1, boolean b, View view, ViewGroup viewGroup) {
-                if (view == null)
-                    view = LayoutInflater.from(viewGroup.getContext()).inflate(android.R.layout.simple_expandable_list_item_1, viewGroup, false);
-                TextView view1 = (TextView) view;
-                view1.setText(G.countries[i][i1]);
-                return view1;
-            }
-
-            @Override
-            public boolean isChildSelectable(int i, int i1) {
-                return false;
-            }
-        });
 
     }
 }
