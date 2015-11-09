@@ -1,7 +1,9 @@
 package com.yayayouji;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +20,6 @@ import android.widget.TextView;
  * 其他页面可由navView来进入
  */
 public class YaYaYouJi extends AppCompatActivity {
-    ExpandableListView exlv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
