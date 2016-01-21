@@ -1,3 +1,10 @@
+.*
+/.idea/gradle.xml
+/OneKeyShare/OneKeyShare.iml
+/ShareSdk/ShareSdk.iml
+/app/app.iml
+
+
 .gradle
 /local.properties
 /.idea/workspace.xml
