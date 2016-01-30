@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/ShareSdk/ShareSdk.iml" filepath="$PROJECT_DIR$/ShareSdk/ShareSdk.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/yayayouji_android.iml" filepath="$PROJECT_DIR$/yayayouji_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yyui/yyui.iml" filepath="$PROJECT_DIR$/yyui/yyui.iml" />
     </modules>
   </component>
 </project>
