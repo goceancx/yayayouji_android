@@ -30,6 +30,8 @@
         <activity android:name=".YaYaYouJi" />
         <activity android:name=".module.travelnote.YYTravelNote" />
         <activity android:name=".main.HomePageActivity" />
+        <activity android:name=".main.HomePageCardDetail" />
+        <activity android:name=".main.QuestionMain" />
 
 
         <activity

@@ -16,35 +16,30 @@ import com.yayayouji.base.BaseActivity;
 /**
  * Created by oceancx on 16/3/6.
  */
-public class HomePageActivity extends BaseActivity {
+public class QuestionMain extends BaseActivity {
 
 
-    RecyclerView home_page_rv;
-
-    HomePageAdapter mAdapter;
-    Toolbar hp_toolbar;
-
+    private Toolbar qm_toolbar;
+    private RecyclerView qm_rv;
+    private QuestionMainAdapter mAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page_aty);
+        setContentView(R.layout.question_main_aty);
+        qm_toolbar = (Toolbar) findViewById(R.id.qm_toolbar);
 
-        hp_toolbar = (Toolbar) findViewById(R.id.hp_toolbar);
-        setSupportActionBar(hp_toolbar);
+        setSupportActionBar(qm_toolbar);
+
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
-        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setTitle("");
 
-
-        home_page_rv = (RecyclerView) findViewById(R.id.home_page_rv);
-        mAdapter = new HomePageAdapter();
-        home_page_rv.setLayoutManager(new LinearLayoutManager(this));
-        home_page_rv.setAdapter(mAdapter);
-
-
+        qm_rv = (RecyclerView) findViewById(R.id.qm_rv);
+        mAdapter = new QuestionMainAdapter();
+        qm_rv.setLayoutManager(new LinearLayoutManager(this));
+        qm_rv.setAdapter(mAdapter);
     }
-
 
     private class VH extends RecyclerView.ViewHolder {
 
@@ -54,10 +49,10 @@ public class HomePageActivity extends BaseActivity {
         }
     }
 
-    private class HomePageAdapter extends RecyclerView.Adapter<VH> {
+    private class QuestionMainAdapter extends RecyclerView.Adapter<VH> {
         @Override
         public VH onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_page_card_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.qm_card_item, parent, false);
             return new VH(view);
         }
 
@@ -71,7 +66,7 @@ public class HomePageActivity extends BaseActivity {
                     /**
                      * 进入问题详情页
                      */
-                    Intent intent = new Intent(HomePageActivity.this, HomePageCardDetail.class);
+                    Intent intent = new Intent(QuestionMain.this, HomePageCardDetail.class);
                     startActivity(intent);
                 }
             });

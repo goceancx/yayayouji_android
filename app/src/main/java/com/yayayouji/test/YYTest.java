@@ -23,7 +23,7 @@ public class YYTest extends ListActivity {
 
 
     private String packageName = Config.packageName;
-    private String startActivityName = "HomePageActivity";
+    private String startActivityName = "QuestionMain";
 
 
     private ActivityInfo target;
