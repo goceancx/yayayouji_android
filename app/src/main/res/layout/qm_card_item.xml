@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:paddingLeft="8dp"
-                android:text="如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息如何劝说女友不要吃了饭就躺床上休息"
+                android:text="@string/qm_content"
                 android:textSize="14sp" />
 
             <ImageView

@@ -4,34 +4,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.CoordinatorLayout
+    <com.yayayouji.main.QuestionMainLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.design.widget.AppBarLayout
-            android:id="@+id/appbar"
+        <View
+            android:id="@+id/qm_blue_bg"
+            android:layout_width="match_parent"
+            android:layout_height="225dp"
+            android:background="?attr/colorPrimary" />
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/qm_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
+
+
+        <TextView
+            android:id="@+id/qm_title_tv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:paddingBottom="8dp"
+            android:paddingLeft="45dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:text="我想买一套FRESH，T字部位出油脱皮，两颊皮薄，毛孔有点大，应该买什么系列的？"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/qm_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />
-
-        </android.support.design.widget.AppBarLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/qm_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipChildren="false"
-            android:clipToPadding="false"
-            android:paddingTop="8dp"
-            app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior" />
+            android:clipToPadding="false" />
+
+        <include layout="@layout/qm_card" />
+
 
 
         <android.support.design.widget.FloatingActionButton
@@ -39,10 +52,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
-            android:layout_margin="16dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
             android:src="@drawable/ic_add_white_18dp" />
 
-    </android.support.design.widget.CoordinatorLayout>
+    </com.yayayouji.main.QuestionMainLayout>
 
 
 </FrameLayout>

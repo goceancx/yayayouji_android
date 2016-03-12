@@ -20,7 +20,6 @@ public class HomePageActivity extends BaseActivity {
 
 
     RecyclerView home_page_rv;
-
     HomePageAdapter mAdapter;
     Toolbar hp_toolbar;
 
@@ -35,14 +34,10 @@ public class HomePageActivity extends BaseActivity {
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
-
-
         home_page_rv = (RecyclerView) findViewById(R.id.home_page_rv);
         mAdapter = new HomePageAdapter();
         home_page_rv.setLayoutManager(new LinearLayoutManager(this));
         home_page_rv.setAdapter(mAdapter);
-
-
     }
 
 
