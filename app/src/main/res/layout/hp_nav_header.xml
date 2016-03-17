@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#3291e0"
-    android:orientation="vertical"
-    android:paddingLeft="14dp">
+    android:paddingLeft="14dp"
+    android:paddingTop="25dp">
 
 
     <ImageButton

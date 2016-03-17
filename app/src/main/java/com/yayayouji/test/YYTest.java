@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
-import com.yayayouji.YaYaYouJi;
 import com.yayayouji.global.Config;
 import com.yayayouji.util.DebugLog;
 
@@ -18,14 +17,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- *
- *
  * Created by oceancx on 15/10/24.
  */
 public class YYTest extends ListActivity {
 
     private String packageName = Config.packageName;
-    private String startActivityName = "YaYaYouJi";
+    private String startActivityName = "QuestionMain";
 
 
     private ActivityInfo target;

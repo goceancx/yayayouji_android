@@ -1,8 +1,12 @@
 package com.yayayouji.main;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -25,11 +29,13 @@ public class HomePageActivity extends BaseActivity {
     HomePageAdapter mAdapter;
     Toolbar hp_toolbar;
 
+    ActionBarDrawerToggle mDrawerToggle;
+    DrawerLayout mDrawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_aty);
-
 
         initTitle();
 
@@ -42,25 +48,56 @@ public class HomePageActivity extends BaseActivity {
     private void initTitle() {
         hp_toolbar = (Toolbar) findViewById(R.id.hp_toolbar);
         setSupportActionBar(hp_toolbar);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.hp_drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,
+                mDrawerLayout,
+                hp_toolbar,
+                0,
+                0) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
+        ab.setHomeButtonEnabled(true);
+    }
 
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
 
     //设置顶部图标
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.home_page_menu,menu);
+        getMenuInflater().inflate(R.menu.home_page_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-
-        }
+        if (mDrawerToggle.onOptionsItemSelected(item))
+            return true;
         return super.onOptionsItemSelected(item);
     }
 

@@ -26,13 +26,14 @@
             android:icon="@drawable/ic_forum"
             android:title="私信" />
 
+        <item
+            android:id="@+id/hp_nav_change_theme"
+            android:title="切换主题" />
+        <item
+            android:id="@+id/hp_nav_setting"
+            android:title="设置" />
+
     </group>
 
-    <item
 
-        android:title="切换主题" />
-    <item
-
-        android:title="设置" />
-  
 </menu>

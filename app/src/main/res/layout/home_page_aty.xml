@@ -14,7 +14,6 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        android:paddingTop="25dp"
         app:headerLayout="@layout/hp_nav_header"
         app:menu="@menu/hp_drawer_view" />
 
