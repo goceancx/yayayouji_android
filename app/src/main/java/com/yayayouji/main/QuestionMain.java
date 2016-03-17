@@ -31,7 +31,6 @@ import com.yayayouji.util.DebugLog;
  */
 public class QuestionMain extends BaseActivity {
 
-
     ActionBar ab;
     String title = "我想买一套FRESH，T字部位出油脱皮，两颊皮薄，毛孔有点大，应该买什么系列的？";
     Button qm_card_ll_focus_bt;
@@ -91,8 +90,6 @@ public class QuestionMain extends BaseActivity {
                 DebugLog.e("e:" + e_h + " s:" + s_h);
 
                 if (!toggleAnim) {
-
-
                     qm_card_ll.animate().scaleYBy(scaleY_factor).setDuration(300).withEndAction(new Runnable() {
                         @Override
                         public void run() {

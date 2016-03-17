@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
+import com.yayayouji.YaYaYouJi;
 import com.yayayouji.global.Config;
 import com.yayayouji.util.DebugLog;
 
@@ -24,7 +25,7 @@ import java.util.Arrays;
 public class YYTest extends ListActivity {
 
     private String packageName = Config.packageName;
-    private String startActivityName = "HomePageActivity";
+    private String startActivityName = "YaYaYouJi";
 
 
     private ActivityInfo target;

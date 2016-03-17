@@ -11,6 +11,7 @@ import com.yayayouji.R;
  * Created by oceancx on 16/3/6.
  */
 public class HomePageCardDetail extends AppCompatActivity {
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

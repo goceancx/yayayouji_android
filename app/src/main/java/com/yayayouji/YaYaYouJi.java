@@ -1,7 +1,6 @@
 package com.yayayouji;
 
-import android.content.Context;
-import android.media.AudioManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,8 +12,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-import com.yayayouji.receiver.RemoteControlReceiver;
+import com.yayayouji.net.YYHttpClient;
+import com.yayayouji.util.DebugLog;
+
+import java.io.IOException;
+import java.net.URLEncoder;
 
 import cn.sharesdk.framework.ShareSDK;
 import cn.sharesdk.onekeyshare.OnekeyShare;
@@ -30,13 +35,14 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class YaYaYouJi extends AppCompatActivity {
 
     DrawerLayout mDrawerLayout;
+    Button post_bt, get_bt;
+    TextView content_tv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         ShareSDK.initSDK(this);
-
 
         setContentView(R.layout.yayayouji);
 
@@ -58,6 +64,27 @@ public class YaYaYouJi extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showShare();
+            }
+        });
+
+
+        post_bt = (Button) findViewById(R.id.post_bt);
+        get_bt = (Button) findViewById(R.id.get_bt);
+        content_tv = (TextView) findViewById(R.id.result_tv);
+        get_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NetTask t = new NetTask();
+                t.execute("http://192.168.56.15/index.php");
+            }
+        });
+
+        post_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PostTask task = new PostTask();
+                String json = "{\"name\":3123,\"captain\":true,\"gender\":\"F\"}";
+                task.execute("http://192.168.56.15/register0.php", json);
             }
         });
 
@@ -92,7 +119,6 @@ public class YaYaYouJi extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     private void showShare() {
         ShareSDK.initSDK(this);
         OnekeyShare oks = new OnekeyShare();
@@ -121,4 +147,45 @@ public class YaYaYouJi extends AppCompatActivity {
         oks.show(this);
     }
 
+    private class NetTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                return YYHttpClient.get(params[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            DebugLog.e(s);
+            content_tv.setText(s);
+        }
+    }
+
+    private class PostTask extends AsyncTask<String, Void, String> {
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                DebugLog.e("param[0]:" + params[0] + " params[1]:" + params[1]);
+
+                return YYHttpClient.post(params[0], URLEncoder.encode("name=3123&captain=on&gender=F", "utf-8"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            DebugLog.e(s);
+            content_tv.setText(s);
+        }
+    }
+
 }
+
