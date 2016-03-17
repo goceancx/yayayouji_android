@@ -17,13 +17,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
+ *
+ *
  * Created by oceancx on 15/10/24.
  */
 public class YYTest extends ListActivity {
 
-
     private String packageName = Config.packageName;
-    private String startActivityName = "QuestionMain";
+    private String startActivityName = "HomePageActivity";
 
 
     private ActivityInfo target;

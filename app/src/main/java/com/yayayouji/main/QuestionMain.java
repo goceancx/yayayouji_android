@@ -92,8 +92,6 @@ public class QuestionMain extends BaseActivity {
 
                 if (!toggleAnim) {
 
-                    ObjectAnimator.ofInt(qm_card_ll,"height",0,1);
-                    ViewPropertyAnimator animator=ObjectAnimator.ofInt(qm_card_ll, ViewAnimator.Y,1,1);
 
                     qm_card_ll.animate().scaleYBy(scaleY_factor).setDuration(300).withEndAction(new Runnable() {
                         @Override

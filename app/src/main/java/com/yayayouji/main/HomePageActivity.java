@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -19,27 +21,48 @@ import com.yayayouji.base.BaseActivity;
 public class HomePageActivity extends BaseActivity {
 
 
-    RecyclerView home_page_rv;
+    RecyclerView hp_rv;
     HomePageAdapter mAdapter;
     Toolbar hp_toolbar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_aty);
 
+
+        initTitle();
+
+        hp_rv = (RecyclerView) findViewById(R.id.home_page_rv);
+        mAdapter = new HomePageAdapter();
+        hp_rv.setLayoutManager(new LinearLayoutManager(this));
+        hp_rv.setAdapter(mAdapter);
+    }
+
+    private void initTitle() {
         hp_toolbar = (Toolbar) findViewById(R.id.hp_toolbar);
         setSupportActionBar(hp_toolbar);
         final ActionBar ab = getSupportActionBar();
         ab.setHomeAsUpIndicator(R.drawable.ic_menu);
         ab.setDisplayHomeAsUpEnabled(true);
-        home_page_rv = (RecyclerView) findViewById(R.id.home_page_rv);
-        mAdapter = new HomePageAdapter();
-        home_page_rv.setLayoutManager(new LinearLayoutManager(this));
-        home_page_rv.setAdapter(mAdapter);
+
     }
 
+
+    //设置顶部图标
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.home_page_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private class VH extends RecyclerView.ViewHolder {
 
