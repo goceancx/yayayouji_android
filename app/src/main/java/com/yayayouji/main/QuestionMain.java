@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.yayayouji.R;
 import com.yayayouji.base.BaseActivity;
@@ -36,32 +35,16 @@ public class QuestionMain extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.question_main_aty);
-        qm_toolbar = (Toolbar) findViewById(R.id.qm_toolbar);
-
-        setSupportActionBar(qm_toolbar);
-
-        ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
-        ab.setHomeAsUpIndicator(R.drawable.ic_arrow_back_white_24dp);
 
         qm_rv = (RecyclerView) findViewById(R.id.qm_rv);
         mAdapter = new QuestionMainAdapter();
-        qm_rv.setLayoutManager(new LinearLayoutManager(this));
         qm_rv.setAdapter(mAdapter);
+        qm_rv.setLayoutManager(new LinearLayoutManager(this));
 
-
-        qm_card_ll = (LinearLayout) findViewById(R.id.qm_card_ll);
-        qm_card_ll_focus_bt = (Button) findViewById(R.id.qm_card_ll_focus_bt);
-        final TextView tv = (TextView) qm_card_ll.findViewById(R.id.qm_card_ll_tv);
-        String content = getString(R.string.qm_content);
-        final String ori = tv.getText().toString();
-
-
-        qm_card_ll_focus_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        qm_toolbar = (Toolbar) findViewById(R.id.qm_toolbar);
+        setSupportActionBar(qm_toolbar);
+//      ActionBar ab = getSupportActionBar();
+//      ab.setHomeAsUpIndicator(R.drawable.ic_add_white_18dp);
 
 
     }

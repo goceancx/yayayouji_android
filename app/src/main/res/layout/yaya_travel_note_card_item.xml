@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    app:cardCornerRadius="8dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:text=" setupres.dll下载，解决缺少setupres.dll丢失问题，dll常规安装方法（仅供参考）： 一、如果在运行某软件或编译程序时提示缺少、找不到xxx.dll等类似提示，您...download.pchome.net/dl...  - 百度快照 - 66%好评" />
+</android.support.v7.widget.CardView>

@@ -22,7 +22,7 @@ import java.util.Arrays;
 public class YYTest extends ListActivity {
 
     private String packageName = Config.packageName;
-    private String startActivityName = "QuestionMain";
+    private String startActivityName = "YaYaMain";
 
 
     private ActivityInfo target;

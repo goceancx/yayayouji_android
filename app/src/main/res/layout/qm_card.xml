@@ -5,7 +5,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:paddingLeft="8dp"
-    android:paddingRight="8dp">
+    android:paddingRight="8dp"
+    android:visibility="gone">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -65,12 +66,12 @@
                 android:layout_weight="1" />
 
             <Button
+                android:id="@+id/qm_card_ll_focus_bt"
                 android:layout_width="64dp"
                 android:layout_height="32dp"
                 android:layout_marginRight="16dp"
                 android:background="@android:color/holo_green_dark"
                 android:text="关注"
-                android:id="@+id/qm_card_ll_focus_bt"
                 android:textColor="@android:color/white" />
         </LinearLayout>
     </android.support.v7.widget.CardView>

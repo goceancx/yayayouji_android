@@ -28,10 +28,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".YaYaYouJi" />
-        <activity android:name=".module.travelnote.YYTravelNote" />
         <activity android:name=".main.HomePageActivity" />
         <activity android:name=".main.HomePageCardDetail" />
         <activity android:name=".main.QuestionMain" />
+        <activity android:name=".main.YaYaMain" />
+        <activity android:name=".module.travelnote.YaYaTravelNote" />
+        <activity android:name=".module.music.YaYaMusic" />
+        <activity android:name=".module.english.YaYaEnglish" />
 
         <activity
             android:name="com.mob.tools.MobUIShell"
