@@ -9,5 +9,9 @@ import android.view.View;
 public class DummyViewHolder extends RecyclerView.ViewHolder {
     public DummyViewHolder(View itemView) {
         super(itemView);
+        doSomething();
+    }
+
+    public void doSomething() {
     }
 }

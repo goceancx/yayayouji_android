@@ -17,13 +17,18 @@ import com.yayayouji.base.BaseFragment;
  */
 public class YaYaTravelNoteFg extends BaseFragment {
 
-
     RecyclerView yt_rv;
+    TravelNoteAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.yaya_travel_note_fg, container, false);
+        yt_rv = (RecyclerView) v.findViewById(R.id.yaya_travel_note_fg_rv);
+        adapter = new TravelNoteAdapter();
+        yt_rv.setAdapter(adapter);
+        yt_rv.setLayoutManager(new LinearLayoutManager(yt_rv.getContext()));
+
         return v;
     }
 
@@ -31,14 +36,16 @@ public class YaYaTravelNoteFg extends BaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        yt_rv = (RecyclerView) findViewById(R.id.yaya_travel_note_fg_rv);
-        yt_rv.setAdapter(new TravelNoteAdapter());
-        yt_rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-
 
     }
 
-    private class TravelNoteAdapter extends RecyclerView.Adapter<VH> {
+    public static class TravelNoteAdapter extends RecyclerView.Adapter<TravelNoteAdapter.VH> {
+
+        @Override
+        public void onBindViewHolder(VH holder, int position) {
+
+        }
+
         @Override
         public VH onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.yaya_travel_note_card_item, parent, false);
@@ -46,19 +53,17 @@ public class YaYaTravelNoteFg extends BaseFragment {
         }
 
         @Override
-        public void onBindViewHolder(VH holder, int position) {
-        }
-
-        @Override
         public int getItemCount() {
             return 20;
         }
-    }
 
 
-    private class VH extends RecyclerView.ViewHolder {
-        public VH(View itemView) {
-            super(itemView);
+        public static class VH extends RecyclerView.ViewHolder {
+            public VH(View itemView) {
+                super(itemView);
+            }
         }
     }
+
+
 }

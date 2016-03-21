@@ -4,24 +4,29 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.view.PagerAdapter;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.yayayouji.R;
+import com.yayayouji.adapter.ImagePagerAdapter;
 import com.yayayouji.base.BaseActivity;
+import com.yayayouji.module.travelnote.fragment.YaYaTravelNoteFg;
+import com.yayayouji.ui.DepthPageTransformer;
+import com.yayayouji.util.DummyViewHolder;
+
+import java.util.ArrayList;
 
 /**
  * 丫丫首页
@@ -32,34 +37,15 @@ import com.yayayouji.base.BaseActivity;
 public class YaYaMain extends BaseActivity {
 
 
-    String[] imgUrls = {
-            "http://file12.mafengwo.net/M00/9F/C9/wKgBpU4dhneBIobOAAoG55h1z3M18.groupinfo.w310.jpeg",
-            "http://file20.mafengwo.net/M00/53/1C/wKgB3FGm0_KAAb0jAAsiMNT3qxk91.groupinfo.w310.jpeg",
-            "http://file21.mafengwo.net/M00/84/A7/wKgB3FDDBtiAVy4eAAYWxt_hcCI30.groupinfo.w310.jpeg",
-            "http://file8.mafengwo.net/M00/5B/53/wKgByU-wzDyDnPtKAAV5PZnbn5E13.groupinfo.w310.jpeg",
-            "http://file20.mafengwo.net/M00/56/86/wKgB3FCnYfSAakS4AEDJhY9X1uY78.groupinfo.w310.jpeg",
-            "http://file2.mafengwo.net/M00/F0/20/wKgBm04aKIebqGk-AAO_gCGGYd446.groupinfo.w310.jpeg",
-            "http://file7.mafengwo.net/M00/35/02/wKgByU_y59O-tALrAAnjKaOeV8A92.groupinfo.w310.jpeg",
-            "http://file25.mafengwo.net/M00/00/C0/wKgB4lL1Cf-AfYmCAAiYubWpl_477.groupinfo.w310.jpeg",
-            "http://file21.mafengwo.net/M00/F5/A9/wKgB3FCXWPWAPm-sAAsuXZDHX9I53.groupinfo.w310.jpeg",
-            "http://file4.mafengwo.net/M00/62/DB/wKgBm04Y_87Yc7tzAAGHhkE54og84.groupinfo.w310.jpeg",
-            "http://file26.mafengwo.net/M00/38/EB/wKgB4lKmoyOAdJwWAAyyRmElAAY57.groupinfo.w310.jpeg",
-            "http://file21.mafengwo.net/M00/EB/ED/wKgB21B0QATdrQ4-AAa9V_96uas78.groupinfo.w310.jpeg",
-            "http://file21.mafengwo.net/M00/09/A9/wKgB3FGQec2AS-h_AAeihwnYS0s27.groupinfo.w310.jpeg",
-            "http://file11.mafengwo.net/M00/88/92/wKgBpU5vqrqzYZA2AADAVWvzNbQ83.groupinfo.w310.jpeg",
-            "http://file5.mafengwo.net/M00/93/3A/wKgBjE8JK4SXf8qzAAJarVYv5FQ06.groupinfo.w310.jpeg",
-            "http://file21.mafengwo.net/M00/3F/DF/wKgB21BhzeLuPpMqAANYKIcG8rY42.groupinfo.w310.jpeg",
-            "http://file20.mafengwo.net/M00/EB/F6/wKgB21B0QAbQEM5hAAPrmtdMmAM50.groupinfo.w310.jpeg",
-            "http://file26.mafengwo.net/M00/C2/A7/wKgB4lL01xaATftwAB3UyYP1EAo031.groupinfo.w310.gif",
-            "http://file20.mafengwo.net/M00/AB/D6/wKgB3FE6tyuAIAKOABIwyEpGtIo08.groupinfo.w310.jpeg",
-            "http://file26.mafengwo.net/M00/BA/E5/wKgB4lOaYk-APVAIAADv55bSLfU73.groupinfo.w310.jpeg"
-    };
     ActionBarDrawerToggle mDrawerToggle;
     Toolbar ym_toolbar;
 
     RecyclerView yaya_main_rv;
     boolean once = false;
-    ViewPager pager;
+    ViewPager ym_view_pager;
+
+    TabLayout ym_tablayout;
+    String[] titles = {""};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,62 +57,21 @@ public class YaYaMain extends BaseActivity {
 
         setUpDrawerToggle();
 
-        yaya_main_rv = (RecyclerView) findViewById(R.id.yaya_main_rv);
-        final YaYaMainRecyclerAdapter adapter = new YaYaMainRecyclerAdapter();
-        yaya_main_rv.setAdapter(adapter);
-        yaya_main_rv.setLayoutManager(new LinearLayoutManager(this));
+//        yaya_main_rv = (RecyclerView) findViewById(R.id.yaya_main_rv);
+//        YaYaMainRecyclerAdapter adapter = new YaYaMainRecyclerAdapter();
+//        yaya_main_rv.setAdapter(adapter);
+//        yaya_main_rv.setLayoutManager(new LinearLayoutManager(this));
 
-        pager = (ViewPager) findViewById(R.id.header_pager);
-        pager.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount() {
-                return imgUrls.length;
-            }
 
-            @Override
-            public Object instantiateItem(ViewGroup container, int position) {
-                ImageView im = new ImageView(container.getContext());
-                ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                container.addView(im, params);
-                im.setScaleType(ImageView.ScaleType.FIT_XY);
-                Glide.with(container.getContext()).load(imgUrls[position]).into(im);
-                return im;
-            }
+        ym_view_pager = (ViewPager) findViewById(R.id.ym_viewpager);
 
-            @Override
-            public void destroyItem(ViewGroup container, int position, Object object) {
-                container.removeView((ImageView) object);
-            }
-
-            @Override
-            public boolean isViewFromObject(View view, Object object) {
-                return true;
-            }
-        });
-
-//        final CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.ym_collapsingtoolbar);
-//        collapsingToolbarLayout.setTitleEnabled(false);
-//        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.ym_appbar);
-//        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-//            boolean isShow = false;
-//            int scrollRange = -1;
-//
-//            @Override
-//            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-//                if (scrollRange == -1) {
-//                    scrollRange = appBarLayout.getTotalScrollRange();
-//                }
-//                if (scrollRange + verticalOffset == 0) {
-//                    collapsingToolbarLayout.setTitle("首页");
-//
-//                    isShow = true;
-//                } else if (isShow) {
-//                    collapsingToolbarLayout.setTitle("");
-//                    isShow = false;
-//                }
-//            }
-//        });
-
+        YMPagerAdapter pagerAdapter = new YMPagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(new YaYaTravelNoteFg(), "游记");
+        pagerAdapter.addFragment(new YaYaTravelNoteFg(), "音乐");
+        pagerAdapter.addFragment(new YaYaTravelNoteFg(), "英语");
+        ym_view_pager.setAdapter(pagerAdapter);
+        ym_tablayout = (TabLayout) findViewById(R.id.ym_tablayout);
+        ym_tablayout.setupWithViewPager(ym_view_pager);
 
     }
 
@@ -177,7 +122,6 @@ public class YaYaMain extends BaseActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
         mDrawerToggle.syncState();
     }
 
@@ -187,45 +131,95 @@ public class YaYaMain extends BaseActivity {
         return true;
     }
 
+    /**
+     * 主页Adapter
+     * 各个模块的概览Fragment
+     */
+    static class YMPagerAdapter extends FragmentPagerAdapter {
+        final ArrayList<Fragment> fragments = new ArrayList<>();
+        final ArrayList<String> fgTitles = new ArrayList<>();
+
+        public YMPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        public void addFragment(Fragment fg, String title) {
+            fragments.add(fg);
+            fgTitles.add(title);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments.get(position);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return fgTitles.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.size();
+        }
+    }
 
     private class YaYaMainRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
 
         Context context;
         private int TYPE_HEADER = 1;
 
         @Override
         public int getItemViewType(int position) {
-            return super.getItemViewType(position);
+            if (position == 0)
+                return TYPE_HEADER;
+            else
+                return super.getItemViewType(position);
         }
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             context = parent.getContext();
-            View view = LayoutInflater.from(context).inflate(R.layout.yaya_main_item, parent, false);
+            View view;
+            if (viewType == TYPE_HEADER) {
+                view = LayoutInflater.from(context).inflate(R.layout.yaya_main_header_item, parent, false);
+                return new DummyViewHolder(view) {
+                    @Override
+                    public void doSomething() {
+                        ViewPager pager = (ViewPager) itemView.findViewById(R.id.header_pager);
+                        pager.setPageTransformer(true, new DepthPageTransformer());
+                        pager.setAdapter(new ImagePagerAdapter(getSupportFragmentManager()));
+                    }
+                };
+            } else {
+                view = LayoutInflater.from(context).inflate(R.layout.yaya_main_item, parent, false);
+            }
             return new VH(view);
         }
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 //             holder.image
+            if (getItemViewType(position) == TYPE_HEADER) {
 
-            VH vh = (VH) holder;
-            Glide.with(context).load(imgUrls[position]).into(vh.image);
+            } else {
+                VH vh = (VH) holder;
+                //  Glide.with(context).load(imgUrls[position]).into(vh.image);
+            }
         }
 
         @Override
         public int getItemCount() {
-            return imgUrls.length;
+            return 20;
         }
     }
 
     private class VH extends RecyclerView.ViewHolder {
-        ImageView image;
 
         public VH(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.picture_img);
         }
     }
+
+
 }
