@@ -36,6 +36,8 @@
         <activity android:name=".module.music.YaYaMusic" />
         <activity android:name=".module.english.YaYaEnglish" />
         <activity android:name=".module.travelnote.YaYaTravelNoteDetail" />
+        <activity android:name=".module.english.YaYaEnglishDetail" />
+        <activity android:name=".module.music.YaYaMusicDetail" />
 
         <activity
             android:name="com.mob.tools.MobUIShell"

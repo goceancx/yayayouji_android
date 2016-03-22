@@ -3,6 +3,7 @@ package com.yayayouji.main;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.RecyclerView;
@@ -22,6 +24,8 @@ import android.view.ViewGroup;
 import com.yayayouji.R;
 import com.yayayouji.adapter.ImagePagerAdapter;
 import com.yayayouji.base.BaseActivity;
+import com.yayayouji.module.english.YaYaEnglishFg;
+import com.yayayouji.module.music.YaYaMusicFg;
 import com.yayayouji.module.travelnote.fragment.YaYaTravelNoteFg;
 import com.yayayouji.ui.DepthPageTransformer;
 import com.yayayouji.util.DummyViewHolder;
@@ -43,6 +47,7 @@ public class YaYaMain extends BaseActivity {
     RecyclerView yaya_main_rv;
     boolean once = false;
     ViewPager ym_view_pager;
+
 
     TabLayout ym_tablayout;
     String[] titles = {""};
@@ -67,11 +72,14 @@ public class YaYaMain extends BaseActivity {
 
         YMPagerAdapter pagerAdapter = new YMPagerAdapter(getSupportFragmentManager());
         pagerAdapter.addFragment(new YaYaTravelNoteFg(), "游记");
-        pagerAdapter.addFragment(new YaYaTravelNoteFg(), "音乐");
-        pagerAdapter.addFragment(new YaYaTravelNoteFg(), "英语");
+        pagerAdapter.addFragment(new YaYaMusicFg(), "音乐");
+        pagerAdapter.addFragment(new YaYaEnglishFg(), "英语");
+        //pagerAdapter.addFragment(new YaYaLetterFg(), "信");
         ym_view_pager.setAdapter(pagerAdapter);
         ym_tablayout = (TabLayout) findViewById(R.id.ym_tablayout);
         ym_tablayout.setupWithViewPager(ym_view_pager);
+
+
 
     }
 
